@@ -54,6 +54,9 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
     devDependencies:
+      '@animation/tailwind-animation':
+        specifier: ^2.3.7
+        version: 2.3.7(tailwindcss@4.3.0)
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.3.5
@@ -96,6 +99,11 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@animation/tailwind-animation@2.3.7':
+    resolution: {integrity: sha512-PCbm9v6dG8KMRQdBuOaDP7ntAiG1luoQmmFk3BP2fWQtT9N4zV8ZVUwhMU+enoCIdeLGo8Ak/S0b53kh0M0JCg==}
+    peerDependencies:
+      tailwindcss: '>=3.1.0 || >=4.0.0'
 
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
@@ -1554,6 +1562,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -3184,6 +3193,10 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@animation/tailwind-animation@2.3.7(tailwindcss@4.3.0)':
+    dependencies:
+      tailwindcss: 4.3.0
 
   '@babel/code-frame@7.29.0':
     dependencies:

@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { CartProvider } from "@/components/cart-context"
 import { WishlistProvider } from "@/components/wishlist-context"
+import { ScrollTop } from "@/components/scrollTop"
+import { CursorFollower } from "@/components/cursorFollower"
 
 export const metadata: Metadata = {
   title: "Nova Store | Premium Everyday Style",
@@ -47,7 +49,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <CartProvider>
-            <WishlistProvider>{children}</WishlistProvider>
+            <WishlistProvider>{children}<ScrollTop/><CursorFollower/></WishlistProvider>
           </CartProvider>
         </ThemeProvider>
       </body>

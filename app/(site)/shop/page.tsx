@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   ArrowRight,
   ArrowUpRight,
+  Search,
 } from "lucide-react"
 import { Instrument_Serif } from "next/font/google"
 import { cn } from "@/lib/utils"
@@ -31,12 +32,21 @@ const instrumentSerif = Instrument_Serif({
 
 export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState("All")
+
   const listingRef = useRef<HTMLDivElement>(null)
 
   const filteredProducts =
     activeCategory === "All"
       ? PRODUCTS
       : PRODUCTS.filter((p) => p.category === activeCategory)
+
+  // Esto guardara el texto que escribira el usuario en el buscador
+  const [searchTerm, setSearchTerm] = useState("")
+
+  // Filtrara los productos por nombre sin importar si se usa mayusculas porque se usa toLowerCase
+  const searchedProducts = filteredProducts.filter((product)=>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -92,6 +102,22 @@ export default function ShopPage() {
         </div>
       </section>
 
+      <div className="mx-auto max-w-x; px-4 pt-8">
+        <InputGroup className="h-12 rounded-full">
+          <InputGroupAddon align="inline-start">
+            <Search className="size-4"/>
+          </InputGroupAddon>
+
+          <InputGroupInput
+            type="text"
+            placeholder="Buscar Productos"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+        </InputGroup>
+
+      </div>
+
       <div className="pt-8">
         <ProductCategory
           activeCategory={activeCategory}
@@ -100,7 +126,7 @@ export default function ShopPage() {
       </div>
       <div ref={listingRef} className="scroll-mt-24">
         <ProductListing
-          products={filteredProducts}
+          products={searchedProducts}
           title={
             activeCategory === "All"
               ? "Shop All Collections"
